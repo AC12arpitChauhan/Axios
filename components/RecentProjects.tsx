@@ -1,16 +1,64 @@
 "use client";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects } from "@/data";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const RecentProjects = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading animation
+      gsap.from(headingRef.current, {
+        opacity: 0,
+        y: -30,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Cards staggered entrance
+      const cards = containerRef.current?.querySelectorAll(".project-card");
+      if (cards) {
+        gsap.from(cards, {
+          opacity: 0,
+          y: 80,
+          scale: 0.95,
+          rotation: 2,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 75%",
+            end: "bottom 25%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="py-20">
-      <h1 className="heading" id="events">
+      <h1 ref={headingRef} className="heading" id="events">
         Collection of our <span className="text-blue-600">recent Events</span>
       </h1>
-      <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-7 mt-10">
+      <div
+        ref={containerRef}
+        className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-7 mt-10"
+      >
         {projects.map((item) => (
           <FlipCard key={item.id} item={item} />
         ))}
@@ -22,6 +70,21 @@ const RecentProjects = () => {
 const FlipCard = ({ item }: { item: any }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const frontRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      // Subtle floating animation
+      gsap.to(container, {
+        y: -5,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    }
+  }, []);
 
   const handleMouseEnter = () => {
     gsap.to(cardRef.current, {
@@ -57,7 +120,8 @@ const FlipCard = ({ item }: { item: any }) => {
 
   return (
     <div
-      className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[85vw]"
+      ref={containerRef}
+      className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[85vw] project-card"
       style={{ perspective: "1500px" }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
