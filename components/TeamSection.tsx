@@ -1,5 +1,10 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const teamMembers = [
   {
@@ -169,12 +174,170 @@ const assistantMembers = [
 ];
 
 export const TeamSection = () => {
+  const heading1Ref = useRef<HTMLHeadingElement>(null);
+  const heading2Ref = useRef<HTMLHeadingElement>(null);
+  const teamGridRef = useRef<HTMLDivElement>(null);
+  const assistantGridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // First heading animation
+      gsap.from(heading1Ref.current, {
+        opacity: 0,
+        y: -40,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: heading1Ref.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Team members staggered entrance
+      const teamCards = teamGridRef.current?.querySelectorAll(".team-member");
+      if (teamCards) {
+        gsap.from(teamCards, {
+          opacity: 0,
+          y: 50,
+          scale: 0.9,
+          duration: 0.6,
+          stagger: 0.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: teamGridRef.current,
+            start: "top 70%",
+            end: "bottom 30%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        // Add hover animations
+        teamCards.forEach((card) => {
+          const element = card as HTMLElement;
+          const image = element.querySelector(".member-image");
+          
+          element.addEventListener("mouseenter", () => {
+            gsap.to(element, {
+              y: -12,
+              scale: 1.05,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+
+            if (image) {
+              gsap.to(image, {
+                scale: 1.1,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+            }
+          });
+
+          element.addEventListener("mouseleave", () => {
+            gsap.to(element, {
+              y: 0,
+              scale: 1,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+
+            if (image) {
+              gsap.to(image, {
+                scale: 1,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+            }
+          });
+        });
+      }
+
+      // Second heading animation
+      gsap.from(heading2Ref.current, {
+        opacity: 0,
+        y: -40,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: heading2Ref.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Assistant members staggered entrance
+      const assistantCards = assistantGridRef.current?.querySelectorAll(".team-member");
+      if (assistantCards) {
+        gsap.from(assistantCards, {
+          opacity: 0,
+          y: 50,
+          scale: 0.9,
+          duration: 0.6,
+          stagger: 0.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: assistantGridRef.current,
+            start: "top 70%",
+            end: "bottom 30%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        // Add hover animations
+        assistantCards.forEach((card) => {
+          const element = card as HTMLElement;
+          const image = element.querySelector(".member-image");
+          
+          element.addEventListener("mouseenter", () => {
+            gsap.to(element, {
+              y: -12,
+              scale: 1.05,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+
+            if (image) {
+              gsap.to(image, {
+                scale: 1.1,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+            }
+          });
+
+          element.addEventListener("mouseleave", () => {
+            gsap.to(element, {
+              y: 0,
+              scale: 1,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+
+            if (image) {
+              gsap.to(image, {
+                scale: 1,
+                duration: 0.4,
+                ease: "power2.out",
+              });
+            }
+          });
+        });
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="text-center py-20 bg-black text-white">
       <h2 className="text-3xl md:text-4xl font-bold mb-12">
         Meet Our <span className="text-blue-500">Team 2025-26</span>
       </h2>
-      <div className="flex flex-wrap justify-center gap-10 px-6 max-w-7xl mx-auto">
+      <div
+        ref={teamGridRef}
+        className="flex flex-wrap justify-center gap-10 px-6 max-w-7xl mx-auto"
+      >
         {teamMembers.map((member, idx) => (
           <div
             key={idx}
@@ -200,7 +363,10 @@ export const TeamSection = () => {
       <h2 className="text-3xl md:text-4xl font-bold mt-24 mb-12">
         Assistant <span className="text-blue-500">Team Leads 2025-26</span>
       </h2>
-      <div className="flex flex-wrap justify-center gap-10 px-6 max-w-7xl mx-auto">
+      <div
+        ref={assistantGridRef}
+        className="flex flex-wrap justify-center gap-10 px-6 max-w-7xl mx-auto"
+      >
         {assistantMembers.map((member, idx) => (
           <div
             key={idx}
