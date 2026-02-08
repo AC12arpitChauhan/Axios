@@ -3,207 +3,168 @@ import Image from "next/image";
 
 const teamMembers = [
   {
-    name: "Ankit Kaushik",
-    role: "CORDINATOR",
-    image: "/ankit.png",
+    name: "Dhruv Sarin",
+    role: "COORDINATOR",
+    image: "/dhruv.jpg",
   },
   {
-    name: "Jitesh Shewaramani",
-    role: "CO-CORDINATOR",
-    image: "/jitesh.png",
+    name: "Arpit Chauhan",
+    role: "CO-COORDINATOR",
+    image: "/arpit.png",
   },
   {
-    name: "Yuvraj Singh Gour",
-    role: "LEAD EXECUTIVE",
-    image: "/yuvraj.png",
+    name: "Ashmit Rajput",
+    role: "CO-COORDINATOR",
+    image: "/ashmit.jpg",
   },
   {
-    name: "Ronak Nayak",
+    name: "Ishan Mishra",
     role: "WEB DEV LEAD",
-    image: "/ronak.png",
+    image: "/ishan.png",
   },
   {
-    name: "Anuj Vishwakarma",
+    name: "Samkit Jain",
     role: "APP DEV LEAD",
-    image: "/anuj.png",
+    image: "/samkit.png",
   },
   {
-    name: "Pritam Goyal",
-    role: "DATA SCIENCE LEAD",
-    image: "/pritam.png",
+    name: "Krish Chordiya",
+    role: "GENAI LEAD",
+    image: "/krishc.jpg",
   },
   {
-    name: "Pratham Upadhyay",
+    name: "Aditi Mishra",
     role: "AI/ML LEAD",
-    image: "/pratham.png",
+    image: "/aditi.png",
   },
   {
-    name: "Somil Rathore",
-    role: "CLOUD LEAD",
-    image: "/somil.png",
+    name: "Yash Jain",
+    role: "DEVOPS LEAD",
+    image: "/yash.png",
   },
   {
-    name: "Himank Shrimal",
-    role: "VLSI LEAD",
-    image: "/himank.png",
-  },
-  {
-    name: "Ajinkya Lakhara",
+    name: "Deepanshu Rajput",
     role: "MANAGEMENT LEAD",
-    image: "/ajinkya.png",
-  },
-  {
-    name: "Kunal Karole",
-    role: "SOCIAL MEDIA LEAD",
-    image: "/kunal.png",
-  },
-  {
-    name: "Mohd Faraz Siddiqui",
-    role: "AI/ML RESEARCH LEAD",
-    image: "/mohd.png",
-  },
-  {
-    name: "Suyash Pradeep Patil",
-    role: "DATA SCIENCE RESEARCH LEAD",
-    image: "/suyash.png",
+    image: "/deepanshu.jpg",
   },
   {
     name: "Suraj Mishra",
-    role: "WEB DEV LEAD",
+    role: "RESEARCH LEAD",
     image: "/suraj.png",
-  },
-  {
-    name: "Abhishek Patel",
-    role: "PR/OUTREACH LEAD",
-    image: "/abhishek.png",
   },
 ];
 
 const assistantMembers = [
   {
-    name: "Shashank Agrawal",
+    name: "Tanuj Singh",
     role: "ASSISTANT WEB DEVELOPER",
-    image: "/ShashankAgarwal.webp",
+    image: "/2025/Tanuj Singh.jpeg",
+    linkdin: "https://portfolio-tanuj-singh.vercel.app/#top",
   },
   {
-    name: "Arpit Chauhan",
+    name: "Rafat Alam",
     role: "ASSISTANT WEB DEVELOPER",
-    image: "/arpit.png",
+    image: "/2025/Rafat Alam.jpeg",
   },
   {
-    name: "Aryan Wattamwar",
-    role: "ASSISTANT WEB DEVELOPER",
-    image: "/aryan.jpg",
-  },
-  {
-    name: "Mayank Kumar Verma",
-    role: "ASSISTANT WEB DEVELOPER",
-    image: "/mayank.jpg",
-  },
-  {
-    name: "Krish Chordiya",
-    role: "ASSISTANT AI/ML DEVELOPER",
-    image: "/krishc.jpg",
-  },
-  {
-    name: "Kanishk Mishra",
-    role: "ASSISTANT AI/ML DEVELOPER",
-    image: "/kanishk.jpg",
-  },
-  {
-    name: "Puneet Waswani",
-    role: "ASSISTANT AI/ML DEVELOPER",
-    image: "/puneet.jpg",
-  },
-  {
-    name: "Deepak kumar",
-    role: "ASSISTANT AI/ML DEVELOPER",
-    image: "/deepak.jpg",
-  },
-  {
-    name: "Krish Rathi",
-    role: "GRAPHIC DESIGNER",
-    image: "/krishr.jpg",
-  },
-  {
-    name: "Almaaz Abbas Rizvi",
-    role: "GRAPHIC DESIGNER",
-    image: "/almaas.jpg",
-  },
-  {
-    name: "Apoorva Bhajpai",
+    name: "Sarthak Patil",
     role: "ASSISTANT APP DEVELOPER",
-    image: "/apoorva.png",
+    image: "/2025/Sarthak Patil.jpg",
   },
   {
-    name: "Akshit Pahade",
+    name: "Atul Kumar",
     role: "ASSISTANT APP DEVELOPER",
-    image: "/akshit.jpg",
+    image: "/2025/Atul Kumar.jpg",
   },
   {
-    name: "Dhruv Sarin",
-    role: "ASSISTANT DATA SCIENTIST",
-    image: "/dhruv.jpg",
+    name: "Daksh Jain",
+    role: "ASSISTANT GAME DEV LEAD",
+    image: "/2025/Daksh Jain.jpg",
   },
   {
-    name: "Tejasri Pendota",
-    role: "ASSISTANT DATA SCIENTIST",
-    image: "/tejasri.jpg",
+    name: "Animesh Singh",
+    role: "ASSISTANT GAME DEV LEAD",
+    image: "/2025/AnimeshSingh.jpg",
   },
   {
-    name: "Dhruvi Sharma",
-    role: "ASSISTANT DATA SCIENTIST",
-    image: "/dhruvi.png",
+    name: "Anuj Ram Shrivastava",
+    role: "ASSISTANT GEN AI LEAD",
+    image: "/2025/Anuj ram shrivastava.jpg",
   },
   {
-    name: "Harsh Goyal",
-    role: "ASSISTANT VLSI LEAD",
-    image: "/harsh.jpg",
+    name: "Manoor Sufiyan Ansari",
+    role: "ASSISTANT DATA SCIENCE LEAD",
+    image: "/2025/Manooooorr.jpg",
   },
   {
-    name: "Jatin Wadhwani",
-    role: "ASSISTANT CLOUD DEVELOPER",
-    image: "/Jatin.jpg",
+    name: "Harsh Kumar Saxena",
+    role: "ASSISTANT AI/ML DEVELOPER",
+    image: "/2025/Harsh Saxena..jpeg",
   },
   {
-    name: "Ashmit Rajput",
-    role: "ASSISTANT CLOUD DEVELOPER",
-    image: "/ashmit.jpg",
+    name: "Nishanth S",
+    role: "ASSISTANT DEVOPS LEAD",
+    image: "/2025/Nishanth.jpg",
   },
   {
-    name: "Vansh Tambi",
-    role: "ASST. SOCIAL MEDIA MANAGER",
-    image: "/vansh.jpg",
+    name: "Dhruv Bhola",
+    role: "ASSISTANT RESEARCH LEAD",
+    image: "/2025/Dhruv Bhola.jpg",
   },
   {
-    name: "Kshitij Nigam",
-    role: "ASST. SOCIAL MEDIA MANAGER",
-    image: "/kshitij.jpg",
+    name: "Utkarsh Soni",
+    role: "EVENT MANAGEMENT TEAM",
+    image: "/2025/Copy of UTKARSH SONI_.png",
   },
   {
-    name: "Shivam Jawaliya",
-    role: "PR & OUTREACH TEAM ASST.",
-    image: "/shivam.jpg",
+    name: "Nishant Yadav",
+    role: "EVENT MANAGEMENT TEAM",
+    image: "/2025/Nishant Yadav.png",
   },
   {
-    name: "Umesh Kumar",
-    role: "PR & OUTREACH TEAM ASST.",
-    image: "/umesh.jpg",
+    name: "Garvit Yadav",
+    role: "EVENT MANAGEMENT TEAM",
+    image: "/2025/Garvit Yadav.jpg",
   },
   {
-    name: "Manish Kumar",
-    role: "MANANGEMENT TEAM ASST.",
-    image: "/manish.png",
+    name: "Atharv Agrawal",
+    role: "PR & OUTREACH TEAM",
+    image: "/2025/Atharv Agrawal.jpg",
   },
   {
-    name: "Akash Singh Lalla",
-    role: "MANANGEMENT TEAM ASST.",
-    image: "/akash.webp",
+    name: "Rohit Malviya",
+    role: "PR & OUTREACH TEAM",
+    image: "/2025/Rohit Malviya.jpg",
   },
   {
-    name: "Deepanshu Rajput",
-    role: "ASST. EXECUTIVE",
-    image: "/deepanshu.jpg",
+    name: "Shreay Agarwal",
+    role: "PR & OUTREACH TEAM",
+    image: "/2025/Shreay Agrawal.JPG",
+  },
+  {
+    name: "Vibhu Roy",
+    role: "SOCIAL MEDIA TEAM",
+    image: "/2025/Shubhojeet Roy.JPG",
+  },
+  {
+    name: "Aman Sharma",
+    role: "SOCIAL MEDIA TEAM",
+    image: "/2025/Aman Sharma.jpg",
+  },
+  {
+    name: "Mrigneeta Verma",
+    role: "SOCIAL MEDIA TEAM",
+    image: "/2025/Mrigneeta Verma.png",
+  },
+  {
+    name: "Rohit",
+    role: "VIDEO EDITOR",
+    image: "/2025/ROHIT MEENA.jpg",
+  },
+  {
+    name: "Jayashis Barua",
+    role: "GRAPHIC DESIGNER",
+    image: "/2025/Jayashis Barua.jpeg",
   },
 ];
 
@@ -211,48 +172,57 @@ export const TeamSection = () => {
   return (
     <section className="text-center py-20 bg-black text-white">
       <h2 className="text-3xl md:text-4xl font-bold mb-12">
-        Meet Our <span className="text-blue-500">Team 2024-25</span>
+        Meet Our <span className="text-blue-500">Team 2025-26</span>
       </h2>
       <div className="flex flex-wrap justify-center gap-10 px-6 max-w-7xl mx-auto">
         {teamMembers.map((member, idx) => (
           <div
             key={idx}
-            className="w-[150px] md:w-[180px] flex flex-col items-center"
+            className="w-[200px] md:w-[180px] flex flex-col items-center group cursor-pointer"
           >
-            <div className="rounded-xl border-2 border-cyan-400 overflow-hidden w-full aspect-[3/4]">
+            <div className="rounded-xl border-2 border-cyan-400 overflow-hidden w-full aspect-[3/4] transition-transform duration-300 ease-in-out group-hover:scale-105 active:scale-100">
               <Image
                 src={member.image}
                 alt={member.name}
                 width={200}
                 height={250}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
             </div>
-            <p className="mt-3 text-sm font-medium">{member.name}</p>
+            <p className="mt-3 text-sm font-medium transition-colors duration-300 group-hover:text-cyan-400">
+              {member.name}
+            </p>
             <p className="text-xs text-gray-300">{member.role}</p>
           </div>
         ))}
       </div>
 
       <h2 className="text-3xl md:text-4xl font-bold mt-24 mb-12">
-        Assistant <span className="text-blue-500">Team Leads 2024-25</span>
+        Assistant <span className="text-blue-500">Team Leads 2025-26</span>
       </h2>
       <div className="flex flex-wrap justify-center gap-10 px-6 max-w-7xl mx-auto">
         {assistantMembers.map((member, idx) => (
           <div
             key={idx}
-            className="w-[150px] md:w-[180px] flex flex-col items-center"
+            className="w-[200px] md:w-[180px] flex flex-col items-center group cursor-pointer"
+            onClick={() => {
+              if (member.linkdin) {
+                window.open(member.linkdin, "_blank");
+              }
+            }}
           >
-            <div className="rounded-xl border-2 border-cyan-400 overflow-hidden w-full aspect-[3/4]">
+            <div className="rounded-xl border-2 border-cyan-400 overflow-hidden w-full aspect-[3/4] transition-transform duration-300 ease-in-out group-hover:scale-105">
               <Image
                 src={member.image}
                 alt={member.name}
                 width={200}
                 height={250}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full transition-transform duration-300 ease-in-out group-hover:scale-105"
               />
             </div>
-            <p className="mt-3 text-sm font-medium">{member.name}</p>
+            <p className="mt-3 text-sm font-medium transition-colors duration-300 group-hover:text-cyan-400">
+              {member.name}
+            </p>
             <p className="text-xs text-gray-300">{member.role}</p>
           </div>
         ))}
