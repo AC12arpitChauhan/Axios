@@ -26,6 +26,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["'Cabinet Grotesk'", "sans-serif"],
+      },
       colors: {
         black: {
           DEFAULT: "#000",
@@ -92,9 +95,10 @@ const config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0px",
+        md: "0px",
+        sm: "0px",
+        DEFAULT: "0px",
       },
       keyframes: {
         "accordion-down": {

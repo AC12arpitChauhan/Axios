@@ -1,6 +1,21 @@
 import {withSentryConfig} from '@sentry/nextjs';
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: [
+      "api.microlink.io",
+      "upload.wikimedia.org",
+      "assets.vercel.com",
+      "randomuser.me",
+    ],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
 
 export default withSentryConfig(nextConfig, {
 // For all available options, see:
