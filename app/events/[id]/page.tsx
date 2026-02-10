@@ -132,7 +132,7 @@ export default function EventPage({ params }: { params: { id: string } }) {
         {/* Back button */}
         <div className="absolute top-24 left-0 right-0 z-20 max-w-[1400px] mx-auto px-4 md:px-8">
           <Link
-            href="/#events"
+            href="/events"
             className="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm font-mono uppercase tracking-widest transition-colors duration-300 group"
           >
             <FaArrowLeft className="text-xs group-hover:-translate-x-1 transition-transform duration-300" />
