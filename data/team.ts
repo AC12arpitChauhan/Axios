@@ -25,7 +25,7 @@ export const leads = [
     id: 4,
     name: "Ishan Mishra",
     role: "Web Dev Lead",
-    img: "/profile.svg",    
+    img: "/ishan-mishra.jpeg",    
   },
   {
     id: 5,

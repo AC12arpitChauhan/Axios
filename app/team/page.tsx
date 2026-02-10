@@ -41,7 +41,7 @@ export default function TeamPage() {
   return (
     <main className="min-h-screen bg-black-100 pt-36 pb-20">
         <Section>
-            <div className="mb-20">
+            <div className="mb-20 pb-40">
                 <p className="text-azure-400 font-mono text-sm tracking-[0.2em] mb-6 uppercase">
                     The Minds Behind The Machine
                 </p>
