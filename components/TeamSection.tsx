@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 import { animateReveal } from "@/lib/animations";
 
 const TeamMemberTeaser = ({ member }: { member: any }) => (
-    <div className="group relative aspect-[3/4] overflow-hidden bg-white/5 border border-white/10 grayscale hover:grayscale-0 transition-all duration-500 team-card">
+    <div className="group relative aspect-[3/4] overflow-hidden bg-white/5 border border-white/10  transition-all duration-500 team-card justify-center items-center">
         <div className="absolute inset-0">
              {member.img && member.img.startsWith('/') ? (
                 <img src={member.img} alt={member.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
@@ -51,9 +51,11 @@ export const TeamSection = () => {
             </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {coreTeam.map((member) => (
-                <TeamMemberTeaser key={member.id} member={member} />
+        <div className="flex flex-wrap justify-center items-center gap-6 mb-12">
+            {coreTeam.map((member, index) => (
+                <div key={member.id} className={`w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] ${index === 1 ? 'scale-110 z-10' : ''} transition-transform duration-200`}>
+                    <TeamMemberTeaser member={member} />
+                </div>
             ))}
         </div>
 

@@ -1,5 +1,5 @@
 "use client";
-import { fullTeam, coreTeam } from "@/data/team";
+import { coreTeam, leads, assistantWebDev, assistantAppDev, assistantGameDev, assistantGenAI, assistantDataScience, assistantAIML, assistantDevOps, assistantResearch, eventManagementTeam, prOutreachTeam, socialMediaTeam, creativeTeam } from "@/data/team";
 import { Section } from "@/components/Section";
 import { HeroText, SectionTitle } from "@/components/ui/Typography";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import { FaLinkedin, FaTwitter } from "react-icons/fa6";
 const TeamMemberCard = ({ member, isCore = false }: { member: any, isCore?: boolean }) => (
     <div className={`group relative overflow-hidden bg-white/5 border border-white/10 ${isCore ? 'aspect-[3/4]' : 'aspect-square'} transition-all duration-300 hover:border-azure/50`}>
         {/* Grayscale to Color hover effect */}
-        <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-500">
+        <div className="absolute inset-0 transition-all duration-500">
              {/* Using a placeholder if img is just a path string */}
             <div className="w-full h-full bg-white/5 flex items-center justify-center text-white/20">
                  {/* In real implementaiton, use Next/Image with valid src */}
@@ -36,7 +36,7 @@ const TeamMemberCard = ({ member, isCore = false }: { member: any, isCore?: bool
 export default function TeamPage() {
     // Separate core and extended (using slicing or specific data if I had it distinct in data/team.ts)
     // For now using the exported arrays
-    const extendedTeam = fullTeam.filter(m => !coreTeam.find(c => c.id === m.id));
+
 
   return (
     <main className="min-h-screen bg-black-100 pt-36 pb-20">
@@ -51,21 +51,169 @@ export default function TeamPage() {
             </div>
 
             {/* Core Team */}
-            <div className="mb-32">
+            <div className="mb-20">
                 <SectionTitle className="mb-12">Core Team</SectionTitle>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {coreTeam.map((member) => (
-                        <TeamMemberCard key={member.id} member={member} isCore={true} />
+                <div className="flex flex-wrap justify-center items-center gap-6">
+                    {coreTeam.map((member, index) => (
+                        <div key={member.id} className={`w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(25%-18px)] ${index === 1 ? 'scale-110 z-10' : ''} transition-transform duration-300`}>
+                            <TeamMemberCard member={member} isCore={true} />
+                        </div>
                     ))}
                 </div>
             </div>
 
-            {/* Full Roster */}
-            <div>
-                 <SectionTitle className="mb-12">Executive Members</SectionTitle>
-                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                    {extendedTeam.map((member) => (
-                        <TeamMemberCard key={member.id} member={member} />
+            {/* Leads */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {leads.map((member) => (
+                        <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* Web Dev Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant Web Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantWebDev.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* App Dev Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant App Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantAppDev.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* Game Dev Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant Game Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantGameDev.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* GenAI Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant GenAI Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantGenAI.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* Data Science Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant Data Science Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantDataScience.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* AI/ML Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant AI/ML Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantAIML.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* DevOps Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant DevOps Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantDevOps.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* Research Assistants */}
+            <div className="mb-20">
+                 <SectionTitle className="mb-12">Assistant Research Leads</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {assistantResearch.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+             {/* Event Management Team */}
+             <div className="mb-20">
+                 <SectionTitle className="mb-12">Event Management Team</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {eventManagementTeam.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+            {/* PR & Outreach Team */}
+             <div className="mb-20">
+                 <SectionTitle className="mb-12">PR & Outreach Team</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {prOutreachTeam.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+             {/* Social Media Team */}
+             <div className="mb-20">
+                 <SectionTitle className="mb-12">Social Media Team</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {socialMediaTeam.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
+                    ))}
+                 </div>
+            </div>
+
+             {/* Creative Team */}
+             <div className="mb-20">
+                 <SectionTitle className="mb-12">Creative Team</SectionTitle>
+                 <div className="flex flex-wrap justify-start gap-6">
+                    {creativeTeam.map((member) => (
+                         <div key={member.id} className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.33%-16px)] lg:w-[calc(20%-19.2px)]">
+                            <TeamMemberCard member={member} />
+                        </div>
                     ))}
                  </div>
             </div>

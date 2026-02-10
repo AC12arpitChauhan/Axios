@@ -16,7 +16,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="pb-20 pt-36 relative w-full overflow-hidden">
+    <div className="pb-20 pt-1 md:pt-1 mt-10 relative w-full overflow-hidden">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -26,7 +26,7 @@ const Hero = () => {
           className="h-[80vh] w-[50vw] top-10 left-full"
           fill="teal"
         />
-        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="green" />
+        <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="cyan" />
       </div>
 
       <div
@@ -43,12 +43,12 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
             
             {/* TEXT CONTENT */}
-            <div ref={textContainerRef} className="flex flex-col items-start justify-center">
+            <div ref={textContainerRef} className="flex flex-col items-center md:items-start justify-center text-center md:text-left">
                 <p className="uppercase tracking-widest text-xs text-teal-100 max-w-80 border-b border-white/10 pb-4 mb-8 font-mono">
                     The Development Club of IIIT Bhopal
                 </p>
 
-                <h1 className="text-6xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-8">
+                <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight mb-8">
                     DIGITAL <br />
                     <span className="text-teal-400">SOLUTIONS</span> <br />
                     <span className="text-white/40">WITH PRECISION</span>
