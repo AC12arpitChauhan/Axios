@@ -7,7 +7,9 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { FaHouse } from "react-icons/fa6";
 
 export const FloatingNav = ({
   navItems,
@@ -22,6 +24,8 @@ export const FloatingNav = ({
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
@@ -58,6 +62,19 @@ export const FloatingNav = ({
           className
         )}
       >
+        {/* Show Home link when not on the homepage */}
+        {!isHome && (
+          <Link
+            href="/"
+            className={cn(
+              "relative text-sm font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            )}
+          >
+            <span className="block sm:hidden"><FaHouse /></span>
+            <span className="hidden sm:block">Home</span>
+          </Link>
+        )}
+
         {navItems.map((navItem: any, idx: number) => {
           const isHashLink = navItem.link.startsWith("/#");
           const linkClasses = cn(
@@ -74,6 +91,11 @@ export const FloatingNav = ({
                 className={linkClasses}
                 onClick={(e) => {
                   e.preventDefault();
+                  // If not on homepage, navigate to homepage with hash
+                  if (!isHome) {
+                    window.location.href = navItem.link;
+                    return;
+                  }
                   const el = document.getElementById(targetId);
                   if (el) {
                     const top = el.getBoundingClientRect().top + window.scrollY;
