@@ -3,6 +3,7 @@
 import { navItems } from "@/data";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import Hero from "@/components/Hero";
+import About from "@/components/About";
 import Impact from "@/components/Impact";
 import Sponsors from "@/components/Sponsors";
 import FeaturedEvent from "@/components/FeaturedEvent";
@@ -22,6 +23,7 @@ const Home = () => {
       <FloatingNav navItems={navItems} />
       
       <Hero />
+      <About />
       <Impact />
       <EventMarquee />
       <Sponsors />
