@@ -11,12 +11,12 @@ const Hero = () => {
 
   useEffect(() => {
     if (textContainerRef.current) {
-        animateReveal(textContainerRef.current, { delay: 0.2 });
+        animateReveal(textContainerRef.current, { delay: 0.2, y: 20 });
     }
   }, []);
 
   return (
-    <div className="pb-20 pt-1 md:pt-1 relative w-full overflow-hidden">
+    <div className="pb-36 pt-1 md:pt-1 relative w-full">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -35,11 +35,11 @@ const Hero = () => {
       >
         <div
           className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white
-         [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+         [mask-image:radial-gradient(ellipse_at_center,transparent_20%,rgba(0,0,0,0.8)_70%,rgba(0,0,0,0.4))]"
         />
       </div>
 
-      <div className="flex justify-center relative my-20 z-10 px-5 md:px-10 max-w-7xl mx-auto">
+      <div className="flex justify-center relative mt-10 mb-16 z-10 px-5 md:px-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
             
             {/* TEXT CONTENT */}
@@ -68,7 +68,7 @@ const Hero = () => {
             </div>
 
             {/* STATIC LOGO */}
-            <div className="flex items-center justify-center lg:justify-end relative h-[40vh] lg:h-[60vh]">
+            <div className="flex items-center justify-center lg:justify-end relative h-[40vh] lg:h-[50vh]">
                 <div className="relative w-full max-w-[400px] lg:max-w-[500px] aspect-square flex items-center justify-center">
                     <img 
                         src="/axiosLogo.png" 
