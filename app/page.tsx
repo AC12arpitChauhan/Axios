@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import Impact from "@/components/Impact";
 import Sponsors from "@/components/Sponsors";
 import FeaturedEvent from "@/components/FeaturedEvent";
+import EventMarquee from "@/components/EventMarquee";
 import Projects from "@/components/Projects";
 import { TeamSection } from "@/components/TeamSection";
 import Join from "@/components/Join";
@@ -22,6 +23,7 @@ const Home = () => {
       
       <Hero />
       <Impact />
+      <EventMarquee />
       <Sponsors />
       <FeaturedEvent />
       <Projects />
