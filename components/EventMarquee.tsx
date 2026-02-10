@@ -10,7 +10,7 @@ const EventMarquee = () => {
   const duplicatedEvents = [...events, ...events];
 
   return (
-    <section className="relative w-full py-16 md:py-24 bg-black-100 overflow-hidden">
+    <section id="events" className="relative w-full py-16 md:py-24 bg-black-100 overflow-hidden">
       {/* Section Label */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 mb-12 md:mb-16 flex items-center justify-between">
         <div className="flex flex-col gap-4">

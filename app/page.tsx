@@ -18,7 +18,7 @@ import Footer from "@/components/Footer";
 
 const Home = () => {
   return (
-    <main className="relative bg-black-100 flex flex-col overflow-hidden mx-auto">
+    <main className="relative bg-black-100 flex flex-col overflow-clip mx-auto">
       <FloatingNav navItems={navItems} />
       
       <Hero />

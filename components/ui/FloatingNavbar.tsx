@@ -58,18 +58,47 @@ export const FloatingNav = ({
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
-          <Link
-            key={`link=${idx}`}
-            href={navItem.link}
-            className={cn(
-              "relative text-sm font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
-            )}
-          >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block">{navItem.name}</span>
-          </Link>
-        ))}
+        {navItems.map((navItem: any, idx: number) => {
+          const isHashLink = navItem.link.startsWith("/#");
+          const linkClasses = cn(
+            "relative text-sm font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+          );
+
+          if (isHashLink) {
+            // Use native <a> for hash links to avoid Next.js re-navigation & animation replay
+            const targetId = navItem.link.replace("/#", "");
+            return (
+              <a
+                key={`link=${idx}`}
+                href={navItem.link}
+                className={linkClasses}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById(targetId);
+                  if (el) {
+                    const top = el.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({ top, behavior: "smooth" });
+                    window.history.pushState(null, "", navItem.link);
+                  }
+                }}
+              >
+                <span className="block sm:hidden">{navItem.icon}</span>
+                <span className="hidden sm:block">{navItem.name}</span>
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={`link=${idx}`}
+              href={navItem.link}
+              className={linkClasses}
+            >
+              <span className="block sm:hidden">{navItem.icon}</span>
+              <span className="hidden sm:block">{navItem.name}</span>
+            </Link>
+          );
+        })}
       </motion.div>
     </AnimatePresence>
   );
