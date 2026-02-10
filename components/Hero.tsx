@@ -16,7 +16,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="pb-20 pt-1 md:pt-1 mt-10 relative w-full overflow-hidden">
+    <div className="pb-20 pt-1 md:pt-1 relative w-full overflow-hidden">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
