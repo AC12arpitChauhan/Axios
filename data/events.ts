@@ -1,4 +1,7 @@
-export const events = [
+import type { Event } from "@/types";
+
+/** All club events, ordered chronologically by ID. */
+export const events: Event[] = [
   {
     id: 1,
     title: "Freshers' Toolkit Introduction",

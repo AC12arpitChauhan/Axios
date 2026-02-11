@@ -1,12 +1,16 @@
-export const gridItems = [
+import type { GridItem } from "@/types";
+
+/** Grid items for the bento-grid section. */
+export const gridItems: GridItem[] = [
   {
     id: 1,
-    title: "We're Hiring Soon for Batch 2025–26, get ready! Axios recruitments are around the corner.",
+    title:
+      "We're Hiring Soon for Batch 2025–26, get ready! Axios recruitments are around the corner.",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "b21.png", 
+    img: "b21.png",
     spareImg: "",
   },
   {
