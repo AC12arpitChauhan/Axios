@@ -1,11 +1,41 @@
-export * from "./nav";
-export * from "./grid";
-export * from "./events";
-export * from "./sponsors";
-export * from "./domains";
-export * from "./team";
+/**
+ * Barrel export for all data modules.
+ *
+ * Import data from `@/data` for convenience, or from specific
+ * sub-modules (e.g., `@/data/events`) for clarity.
+ */
 
-// Re-export specific items to match old index.ts structure if needed for backward compatibility
-// but generally better to import from specific files in new components.
-export { events as projects } from "./events"; // Alias events as projects for existing components
-export { domains as workExperience } from "./domains"; // Alias domains as workExperience
+export { navItems } from "./nav";
+export { gridItems } from "./grid";
+export { events } from "./events";
+export { companies } from "./sponsors";
+export { domains } from "./domains";
+export {
+  coreTeam,
+  leads,
+  fullTeam,
+  socialMedia,
+  assistantWebDev,
+  assistantAppDev,
+  assistantGameDev,
+  assistantGenAI,
+  assistantDataScience,
+  assistantAIML,
+  assistantDevOps,
+  assistantResearch,
+  eventManagementTeam,
+  prOutreachTeam,
+  socialMediaTeam,
+  creativeTeam,
+} from "./team";
+
+// Legacy aliases — kept for backward compatibility with older components.
+export { events as projects } from "./events";
+export { domains as workExperience } from "./domains";
+
+/**
+ * Testimonials stub — the original data source was removed but
+ * `Clients.tsx` (currently unused) still imports it. Keeping an
+ * empty array prevents build errors.
+ */
+export const testimonials: { quote: string; name: string; title: string }[] = [];

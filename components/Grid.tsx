@@ -1,11 +1,16 @@
-import { gridItems } from "@/data";
-import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { gridItems } from "@/data";
+import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
+
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Grid section — bento-style mosaic layout of cards
+ * with staggered scroll-triggered entrance animations.
+ */
 const Grid = () => {
   const gridRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -13,152 +18,69 @@ const Grid = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const items = gridRef.current?.querySelectorAll(".bento-item");
+      if (!items) return;
 
-      if (items) {
-        // Set initial hidden state
-        gsap.set(items, { opacity: 0, y: 60, scale: 0.9 });
+      // Set initial hidden state
+      gsap.set(items, {
+        opacity: 0,
+        y: 60,
+        scale: 0.96,
+      });
 
-        // Fast and snappy entrance animation - appears on page load
-        const tl = gsap.timeline({
-          delay: 2, // Starts after Hero (0.8s) + Experience (1.3s + 0.5s) = ~2.6s, so delay: 2s is good
-        });
+      // Staggered reveal on scroll
+      gsap.to(items, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.9,
+        stagger: {
+          each: 0.12,
+          from: "start",
+        },
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      });
 
-        // Quick staggered entrance with punch
-        tl.to(items, {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.4,
-          stagger: {
-            amount: 0.3,
-            from: "start",
-            ease: "power2.out",
+      // Subtle parallax effect on grid items
+      items.forEach((item) => {
+        gsap.to(item, {
+          y: -15,
+          ease: "none",
+          scrollTrigger: {
+            trigger: item,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.5,
           },
-          ease: "back.out(2)",
         });
-
-        // Fast, snappy hover animations
-        items.forEach((item) => {
-          const element = item as HTMLElement;
-
-          element.addEventListener("mouseenter", () => {
-            // Quick card lift
-            gsap.to(element, {
-              y: -15,
-              scale: 1.04,
-              boxShadow: "0 25px 50px rgba(0, 0, 0, 0.4)",
-              duration: 0.3,
-              ease: "power2.out",
-            });
-
-            // Fast image zoom
-            const img = element.querySelector("img");
-            if (img) {
-              gsap.to(img, {
-                scale: 1.1,
-                duration: 0.3,
-                ease: "power2.out",
-              });
-            }
-
-            // Quick text animations
-            const title = element.querySelector("h3, h2, h1");
-            const description = element.querySelector("p");
-
-            if (title) {
-              gsap.to(title, {
-                y: -4,
-                duration: 0.25,
-                ease: "power2.out",
-              });
-            }
-
-            if (description) {
-              gsap.to(description, {
-                y: -2,
-                duration: 0.25,
-                ease: "power2.out",
-              });
-            }
-          });
-
-          element.addEventListener("mouseleave", () => {
-            // Snappy reset
-            gsap.to(element, {
-              y: 0,
-              scale: 1,
-              boxShadow: "0 0 0 rgba(0, 0, 0, 0)",
-              duration: 0.3,
-              ease: "power2.out",
-            });
-
-            const img = element.querySelector("img");
-            if (img) {
-              gsap.to(img, {
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out",
-              });
-            }
-
-            const title = element.querySelector("h3, h2, h1");
-            const description = element.querySelector("p");
-
-            if (title) {
-              gsap.to(title, {
-                y: 0,
-                duration: 0.25,
-                ease: "power2.out",
-              });
-            }
-
-            if (description) {
-              gsap.to(description, {
-                y: 0,
-                duration: 0.25,
-                ease: "power2.out",
-              });
-            }
-          });
-
-          // Faster floating animation
-          const randomDelay = Math.random() * 1 + 2; // Add 2s to start after entrance animation
-          const randomDuration = 2 + Math.random() * 1;
-
-          gsap.to(element, {
-            y: -6,
-            duration: randomDuration,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: randomDelay,
-          });
-        });
-      }
-    }, gridRef);
+      });
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full py-20">
-      <div ref={gridRef}>
-        <BentoGrid className="w-full py-20">
-          {gridItems.map((item, i) => (
-            <BentoGridItem
-              id={item.id}
-              key={i}
-              title={item.title}
-              description={item.description}
-              className={item.className}
-              img={item.img}
-              imgClassName={item.imgClassName}
-              titleClassName={item.titleClassName}
-              spareImg={item.spareImg}
-            />
-          ))}
-        </BentoGrid>
-      </div>
+    <section ref={sectionRef} id="about" className="relative">
+      <BentoGrid className="w-full py-20" ref={gridRef}>
+        {gridItems.map((item) => (
+          <BentoGridItem
+            id={item.id}
+            key={item.id}
+            title={item.title}
+            description={item.description}
+            className={item.className}
+            img={item.img}
+            imgClassName={item.imgClassName}
+            titleClassName={item.titleClassName}
+            spareImg={item.spareImg}
+          />
+        ))}
+      </BentoGrid>
     </section>
   );
 };

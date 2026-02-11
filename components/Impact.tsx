@@ -1,7 +1,11 @@
 import React from "react";
-import { Section } from "./Section";
 
-const stats = [
+import { Section } from "./Section";
+import type { ImpactStat } from "@/types";
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const STATS: ImpactStat[] = [
   {
     value: "500+",
     label: "Students Impacted",
@@ -24,12 +28,18 @@ const stats = [
   },
 ];
 
+// ─── Component ───────────────────────────────────────────────────────────────
+
+/**
+ * Impact section — showcases key metrics and accomplishments
+ * in a responsive grid layout.
+ */
 const Impact = () => {
   return (
     <Section className="border-t border-white/10 bg-black-100">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
-        {stats.map((stat, index) => (
-          <div key={index} className="flex flex-col items-start group">
+        {STATS.map((stat) => (
+          <div key={stat.label} className="flex flex-col items-start group">
             <h3 className="text-7xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter mb-4 group-hover:text-azure transition-colors duration-300">
               {stat.value}
             </h3>

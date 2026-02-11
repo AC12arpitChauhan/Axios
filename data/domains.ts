@@ -1,4 +1,7 @@
-export const domains = [
+import type { Domain } from "@/types";
+
+/** Technical domains / verticals that the club operates in. */
+export const domains: Domain[] = [
   {
     id: 1,
     title: "Web Development",

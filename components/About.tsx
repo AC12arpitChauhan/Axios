@@ -1,14 +1,17 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { Section } from "./Section";
-import { animateReveal } from "@/lib/animations";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { Section } from "./Section";
+import type { DomainCard } from "@/types";
+
 gsap.registerPlugin(ScrollTrigger);
 
-const domains = [
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const DOMAINS: DomainCard[] = [
   {
     number: "01",
     title: "Web Development",
@@ -53,6 +56,15 @@ const domains = [
   },
 ];
 
+/** Total number of columns in the desktop grid (for border logic). */
+const GRID_COLS = 3;
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
+/**
+ * About section — "Who We Are" — with the club mission statement
+ * and a grid of domain cards.
+ */
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
@@ -63,7 +75,7 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate the heading
+      // Heading entrance
       if (headingRef.current) {
         gsap.fromTo(
           headingRef.current,
@@ -78,11 +90,11 @@ const About = () => {
               start: "top 85%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
-      // Animate the mission block
+      // Mission block entrance
       if (missionRef.current) {
         gsap.fromTo(
           missionRef.current,
@@ -98,11 +110,11 @@ const About = () => {
               start: "top 85%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
-      // Animate domain cards with stagger
+      // Domain cards staggered reveal
       if (domainsRef.current) {
         const cards = domainsRef.current.querySelectorAll(".domain-card");
         gsap.fromTo(
@@ -119,11 +131,11 @@ const About = () => {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
-      // Animate the expanding line
+      // Expanding divider line
       if (lineRef.current) {
         gsap.fromTo(
           lineRef.current,
@@ -137,11 +149,11 @@ const About = () => {
               start: "top 90%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
 
-      // Animate the quote
+      // Philosophy quote entrance
       if (quoteRef.current) {
         gsap.fromTo(
           quoteRef.current,
@@ -156,7 +168,7 @@ const About = () => {
               start: "top 85%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }
     }, sectionRef);
@@ -167,7 +179,7 @@ const About = () => {
   return (
     <div ref={sectionRef}>
       <Section id="about" className="bg-black-100 border-t border-white/10">
-        {/* ── HEADING ── */}
+        {/* ── Heading ── */}
         <div ref={headingRef} className="mb-16 md:mb-24">
           <p className="text-azure font-mono text-sm tracking-[0.2em] mb-6 uppercase">
             Who We Are
@@ -180,12 +192,11 @@ const About = () => {
           </h2>
         </div>
 
-        {/* ── MISSION BLOCK ── */}
+        {/* ── Mission Block ── */}
         <div
           ref={missionRef}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-20 md:mb-32"
         >
-          {/* Left: Big editorial text */}
           <div className="lg:col-span-7">
             <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug tracking-tight">
               Axios is the{" "}
@@ -195,7 +206,6 @@ const About = () => {
             </p>
           </div>
 
-          {/* Right: Supporting details */}
           <div className="lg:col-span-5 flex flex-col justify-end gap-8">
             <p className="text-muted-foreground text-lg leading-relaxed">
               Founded with the conviction that students can ship
@@ -212,13 +222,13 @@ const About = () => {
           </div>
         </div>
 
-        {/* ── EXPANDING LINE ── */}
+        {/* ── Expanding Line ── */}
         <div
           ref={lineRef}
           className="w-full h-[1px] bg-gradient-to-r from-transparent via-azure/60 to-transparent mb-20 md:mb-32 origin-left"
         />
 
-        {/* ── DOMAINS HEADER ── */}
+        {/* ── Domains Header ── */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div>
             <p className="text-azure font-mono text-sm tracking-[0.2em] mb-4 uppercase">
@@ -233,21 +243,20 @@ const About = () => {
           </p>
         </div>
 
-        {/* ── DOMAIN CARDS GRID ── */}
+        {/* ── Domain Cards Grid ── */}
         <div
           ref={domainsRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-white/10"
         >
-          {domains.map((domain, index) => (
+          {DOMAINS.map((domain, index) => (
             <div
-              key={index}
+              key={domain.number}
               className={`domain-card group p-8 md:p-10 flex flex-col justify-between min-h-[280px] relative overflow-hidden transition-colors duration-500 hover:bg-white/[0.03] ${
-                // Add right border to all except last in row, and bottom border to all except last row
-                index % 3 !== 2 ? "lg:border-r border-white/10" : ""
+                index % GRID_COLS !== GRID_COLS - 1 ? "lg:border-r border-white/10" : ""
               } ${index % 2 !== 1 ? "md:border-r lg:border-r-0 border-white/10" : ""} ${
-                index < domains.length - 3 ? "lg:border-b border-white/10" : ""
-              } ${index < domains.length - 2 ? "md:border-b lg:border-b-0 border-white/10" : ""} ${
-                index < domains.length - 1 ? "border-b md:border-b-0 border-white/10" : ""
+                index < DOMAINS.length - GRID_COLS ? "lg:border-b border-white/10" : ""
+              } ${index < DOMAINS.length - 2 ? "md:border-b lg:border-b-0 border-white/10" : ""} ${
+                index < DOMAINS.length - 1 ? "border-b md:border-b-0 border-white/10" : ""
               }`}
             >
               {/* Number */}
@@ -255,7 +264,6 @@ const About = () => {
                 <span className="text-azure font-mono text-lg tracking-wider">
                   {domain.number}
                 </span>
-                {/* Decorative corner */}
                 <div className="w-3 h-3 border-t border-r border-white/10 group-hover:border-azure/50 transition-colors duration-500" />
               </div>
 
@@ -270,9 +278,9 @@ const About = () => {
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
-                  {domain.tags.map((tag, i) => (
+                  {domain.tags.map((tag) => (
                     <span
-                      key={i}
+                      key={tag}
                       className="px-3 py-1 border border-white/10 text-xs font-mono text-white/50 group-hover:text-white/70 group-hover:border-white/20 transition-colors duration-300"
                     >
                       {tag}
@@ -287,8 +295,11 @@ const About = () => {
           ))}
         </div>
 
-        {/* ── PHILOSOPHY QUOTE ── */}
-        <div ref={quoteRef} className="mt-20 md:mt-32 border border-white/10 p-8 md:p-16 relative">
+        {/* ── Philosophy Quote ── */}
+        <div
+          ref={quoteRef}
+          className="mt-20 md:mt-32 border border-white/10 p-8 md:p-16 relative"
+        >
           <div className="absolute top-0 left-0 p-4 border-r border-b border-white/10">
             <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
               Philosophy
@@ -310,7 +321,7 @@ const About = () => {
             </p>
           </div>
 
-          {/* Decorative grid pattern in corner */}
+          {/* Decorative grid pattern */}
           <div className="absolute bottom-0 right-0 w-32 h-32 bg-grid-white/[0.03] opacity-50" />
         </div>
       </Section>

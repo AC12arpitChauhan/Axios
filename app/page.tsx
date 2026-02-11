@@ -13,25 +13,24 @@ import { TeamSection } from "@/components/TeamSection";
 import Join from "@/components/Join";
 import Footer from "@/components/Footer";
 
-// Temporary Footer placeholder or reuse existing if not broken
-// We need to make sure Footer is compatible or use a new one. 
-// For now, I'll use the existing Footer but check it later.
-
+/**
+ * Home page — assembles all top-level sections of the Axios website.
+ */
 const Home = () => {
   return (
     <main className="relative bg-black-100 flex flex-col overflow-clip mx-auto">
       <FloatingNav navItems={navItems} />
-      
+
       <Hero />
       <About />
       <Impact />
+      <FeaturedEvent />
       <EventMarquee />
       <Sponsors />
-      <FeaturedEvent />
       <Projects />
       <TeamSection />
       <Join />
-      
+
       <Footer />
     </main>
   );

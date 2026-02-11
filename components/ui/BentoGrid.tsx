@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 // Also install this npm i --save-dev @types/react-lottie
@@ -11,15 +11,13 @@ import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
 
-export const BentoGrid = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: React.ReactNode;
-}) => {
+export const BentoGrid = forwardRef<
+  HTMLDivElement,
+  { className?: string; children?: React.ReactNode }
+>(({ className, children }, ref) => {
   return (
     <div
+      ref={ref}
       className={cn(
         // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
         "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
@@ -29,7 +27,9 @@ export const BentoGrid = ({
       {children}
     </div>
   );
-};
+});
+
+BentoGrid.displayName = "BentoGrid";
 
 export const BentoGridItem = ({
   className,

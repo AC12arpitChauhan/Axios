@@ -1,4 +1,7 @@
-export const companies = [
+import type { Company } from "@/types";
+
+/** Sponsor and partner companies displayed in the infinite marquee. */
+export const companies: Company[] = [
   {
     id: 1,
     name: "cloudinary",

@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 
 export const metadata: Metadata = {
   title: "Axios IIIT Bhopal",
   description:
-    "Official Website of Axios - The Development Club of IIIT Bhopal",
+    "Official Website of Axios — The Development Club of IIIT Bhopal",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* <link rel="icon" href="/jsm-logo.png" sizes="any" /> */}
-      </head>
+      <head />
       <body className="antialiased bg-background text-foreground overflow-x-hidden">
         <ThemeProvider
           attribute="class"
