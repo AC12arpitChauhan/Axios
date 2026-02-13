@@ -92,10 +92,10 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="w-[150px] md:w-[200px] max-w-full relative rounded-2xl flex-shrink-0 px-8 py-6 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+            className="w-[200px] md:w-[300px] max-w-full relative rounded-2xl flex-shrink-0 px-8 py-6 flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
             key={idx}
           >
-             <img src={item.img} alt={item.name} className="max-w-full max-h-16 object-contain" />
+             <img src={item.img} alt={item.name} className="max-w-full max-h-24 object-contain" />
           </li>
         ))}
       </ul>
