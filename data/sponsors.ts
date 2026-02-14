@@ -2,36 +2,36 @@ import type { Company } from "@/types";
 
 /** Sponsor and partner companies displayed in the infinite marquee. */
 export const companies: Company[] = [
-  {
-    id: 1,
-    name: "cloudinary",
-    img: "/sponsers/cloud.svg",
-    nameImg: "/sponsers/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: "/sponsers/app.svg",
-    nameImg: "/sponsers/appName.svg",
-  },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: "/sponsers/host.svg",
-    nameImg: "/sponsers/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "stream",
-    img: "/sponsers/s.svg",
-    nameImg: "/sponsers/streamName.svg",
-  },
-  {
-    id: 5,
-    name: "docker.",
-    img: "/sponsers/dock.svg",
-    nameImg: "/sponsers/dockerName.svg",
-  },
+  // {
+  //   id: 1,
+  //   name: "cloudinary",
+  //   img: "/sponsers/cloud.svg",
+  //   nameImg: "/sponsers/cloudName.svg",
+  // },
+  // {
+  //   id: 2,
+  //   name: "appwrite",
+  //   img: "/sponsers/app.svg",
+  //   nameImg: "/sponsers/appName.svg",
+  // },
+  // {
+  //   id: 3,
+  //   name: "HOSTINGER",
+  //   img: "/sponsers/host.svg",
+  //   nameImg: "/sponsers/hostName.svg",
+  // },
+  // {
+  //   id: 4,
+  //   name: "stream",
+  //   img: "/sponsers/s.svg",
+  //   nameImg: "/sponsers/streamName.svg",
+  // },
+  // {
+  //   id: 5,
+  //   name: "docker.",
+  //   img: "/sponsers/dock.svg",
+  //   nameImg: "/sponsers/dockerName.svg",
+  // },
   {
     id: 6,
     name: "AWS",

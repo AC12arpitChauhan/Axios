@@ -12,10 +12,10 @@ export const coreTeam: TeamMember[] = [
 
 export const leads: TeamMember[] = [
   { id: 4, name: "Ishan Mishra", role: "Web Dev Lead", img: "/ishan-mishra.jpeg" },
-  { id: 5, name: "Samkit Jain", role: "App Dev Lead", img: "/profile.svg" },
+  { id: 5, name: "Samkit Jain", role: "App Dev Lead", img: "/samkit_jain.jpeg" },
   { id: 6, name: "Krish Chordiya", role: "GenAI Lead", img: "/krishc.jpg" },
   { id: 7, name: "Aditi Mishra", role: "AI/ML Lead", img: "/aditi_mishra.jpg" },
-  { id: 8, name: "Yash Jain", role: "DevOps Lead", img: "/profile.svg" },
+  { id: 8, name: "Yash Jain", role: "DevOps Lead", img: "/yash_jain.jpg.jpeg" },
   { id: 9, name: "Deepanshu Rajput", role: "Management Lead", img: "/deepanshu.jpg" },
   { id: 10, name: "Suraj Mishra", role: "Research Lead", img: "/suraj.png" },
 ];
